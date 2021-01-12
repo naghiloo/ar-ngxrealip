@@ -1,5 +1,15 @@
-# ArvanCloud User Real IP in Nginx
+# ar-ngxrealip
 Show Real IPs instead of ArvanCloud IPs in Nginx servers
+
+## Prerequisites
+You need the Nginx installed (using official packages or binaries) with ngx_http_realip_module enabled.
+
+Also you can check this with nginx -V command.
+```bash
+nginx -V 2>&1 | egrep --color -o 'http_realip_module'
+nginx -V 2>&1 | egrep --color -o 'realip_module'
+
+```
 
 ## How To Use ?
 
@@ -28,7 +38,7 @@ for i in `curl https://www.arvancloud.com/fa/ips.txt`; do
 done
 
 echo "" >> $ARVANCLOUD_FILE_PATH;
-echo "real_ip_header x-forwarded-for;" >> $ARVANCLOUD_FILE_PATH;
+echo "real_ip_header ar-real-ip;" >> $ARVANCLOUD_FILE_PATH;
 
 # check configuration and reload nginx
 nginx -t && systemctl reload nginx
@@ -52,7 +62,7 @@ set_real_ip_from 185.112.35.144/28;
 set_real_ip_from 89.45.48.8/29;
 set_real_ip_from 185.105.101.200/29;
 
-real_ip_header x-forwarded-for;
+real_ip_header ar-real-ip;
 ```
 
 ## Crontab

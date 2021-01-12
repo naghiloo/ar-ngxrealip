@@ -11,7 +11,7 @@ for i in `curl https://www.arvancloud.com/fa/ips.txt`; do
 done
 
 echo "" >> $ARVANCLOUD_FILE_PATH;
-echo "real_ip_header ar-ngxrealip;" >> $ARVANCLOUD_FILE_PATH;
+echo "real_ip_header ar-real-ip;" >> $ARVANCLOUD_FILE_PATH;
 
 #test configuration and reload nginx
 nginx -t && systemctl reload nginx
